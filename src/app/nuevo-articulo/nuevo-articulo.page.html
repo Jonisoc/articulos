@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Agregar articulo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-col size-lg="11" size-xs="6">
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input [(ngModel)]="nombre" #enName></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Descripcion</ion-label>
+      <ion-input [(ngModel)]="descripcion"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Precio</ion-label>
+      <ion-input [(ngModel)]="precio" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">URL Foto</ion-label>
+      <ion-input [(ngModel)]="photo"></ion-input>
+      <ion-button color="warning"(click)="randImg()">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-col>
+  <ion-col>
+    <ion-button color="success" expand="block" *ngIf="nombre && descripcion && precio && photo" (click)="addArticulo()">
+      <ion-icon name="add"></ion-icon>
+    </ion-button>
+  </ion-col>
+</ion-content>

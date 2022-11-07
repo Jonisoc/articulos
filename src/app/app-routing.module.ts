@@ -11,6 +11,18 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'vista-articulo',
+    loadChildren: () => import('./vista-articulo/vista-articulo.module').then( m => m.VistaArticuloPageModule)
+  },
+  {
+    path: 'vista-carro',
+    loadChildren: () => import('./vista-carro/vista-carro.module').then( m => m.VistaCarroPageModule)
+  },
+  {
+    path: 'nuevo-articulo',
+    loadChildren: () => import('./nuevo-articulo/nuevo-articulo.module').then( m => m.NuevoArticuloPageModule)
+  },
 ];
 
 @NgModule({

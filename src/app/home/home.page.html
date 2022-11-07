@@ -1,20 +1,40 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Articulos
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of articulo; let i=index" >
+      <ion-item>
+        <img [src]=item.photo width="150" height="150" class="ion-margin" (click)="getArticuloByID(item.id)">
+        <ion-label (click)="getArticuloByID(item.id)">
+          <h1>{{item.nombre}}</h1><br>
+          {{item.descripcion}}
+          <ion-chip color="secondary" mode="md" outline="false">
+            <ion-label>${{item.precio}} MXN</ion-label>
+          </ion-chip>
+        </ion-label>
+        <ion-button (click)="addCarro(i)" color="success" expand="block" fill="solid" shape="round" size="large">
+          <ion-icon slot="icon-only" name="bag-add"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button color="danger">
+      <ion-icon name="chevron-up-circle"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="getCarrito()">
+        <ion-icon name="cart" color="danger"> Ver carrito </ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="newArticulo()">
+        <ion-icon name="add-circle" color="danger"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>

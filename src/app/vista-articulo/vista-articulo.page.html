@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Ver {{articulo.nombre}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="carta">
+    <ion-card>
+      <img [src]="articulo.photo" alt="Foto del Articulo" class="imagen">
+      <ion-card-header>
+        <ion-card-title>
+          <h1>
+            {{articulo.nombre}}
+            <ion-chip color="secondary" mode="md" outline="false">
+              <ion-label>${{articulo.precio}} MXN</ion-label>
+            </ion-chip>
+          </h1>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-label>
+          <h2>
+            {{articulo.descripcion}}
+          </h2>
+        </ion-label>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

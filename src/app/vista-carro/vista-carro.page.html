@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Carrito de compras</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of carrito; let i=index">
+      <ion-item>
+        <img [src]=item.photo width="120px" class="ion-margin">
+        <ion-label>
+          <h1>{{item.nombre}}</h1><br>
+          {{item.descripcion}}
+          <ion-chip color="secondary" mode="md" outline="false">
+            <ion-label>${{item.precio}} MXN</ion-label>
+          </ion-chip>
+          <ion-chip color="success" mode="md" outline="false">
+            <ion-label>x {{item.cant}}</ion-label>
+          </ion-chip>
+        </ion-label>
+        <ion-button color="danger" fill="outline" size="medium">
+          <ion-label>${{item.cant * item.precio}} MXN</ion-label>
+        </ion-button>
+
+      </ion-item>
+      <ion-item-options side="end" (ionSwipe)="removeCarro(i)">
+        <ion-item-option expandable color="warning" (click)="restCarro(i)">
+          <ion-icon name="remove"></ion-icon>
+        </ion-item-option>
+        <ion-item-option expandable color="danger" (click)="removeCarro(i)">
+          <ion-icon name="trash-bin"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+    
+  </ion-list>
+</ion-content>
+
+<ion-item color="danger" style="position: absolute; bottom: 0px; width: 100%;">
+  <ion-label>
+    <h1>Total: </h1>
+  </ion-label>
+  <ion-button color="danger" expand="block" fill="solid" size="large">
+    <ion-label>${{total}} MXN</ion-label>
+  </ion-button>
+</ion-item>
