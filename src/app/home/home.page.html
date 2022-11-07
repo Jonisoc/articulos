@@ -10,10 +10,11 @@
   <ion-list>
     <ion-item-sliding *ngFor="let item of articulo; let i=index" >
       <ion-item>
-        <img [src]=item.photo width="150" height="150" class="ion-margin" (click)="getArticuloByID(item.id)">
+        <img [src]=item.photo width="120" height="120" class="ion-margin" (click)="getArticuloByID(item.id)">
         <ion-label (click)="getArticuloByID(item.id)">
           <h1>{{item.nombre}}</h1><br>
           {{item.descripcion}}
+          <br>
           <ion-chip color="secondary" mode="md" outline="false">
             <ion-label>${{item.precio}} MXN</ion-label>
           </ion-chip>
